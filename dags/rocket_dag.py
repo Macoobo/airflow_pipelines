@@ -12,7 +12,7 @@ from airflow.operators.python import PythonOperator
 dag = DAG(
     dag_id="Rocket_dag",
     start_date=airflow.utils.dates.days_ago(14),
-    schedule_interval= '@hourly', # At what interval the DAG should run
+    schedule_interval= '@daily', # At what interval the DAG should run
 )
 
 # Apply Bash to download the URL response with curl.
