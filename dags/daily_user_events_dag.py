@@ -53,10 +53,16 @@ calculate_stats = PythonOperator(
 )
 
 
+def email_stats(stats, email):
+    """Send an email..."""
+    print(f"Sending stats to {email}...")
+
+
 def _send_stats(email, **context):
     stats = pd.read_csv(context["templates_dict"]["stats_path"])
     email_stats(stats, email=email)
-    
+
+
 send_stats = PythonOperator(
     task_id="send_stats",
     python_callable=_send_stats,
